@@ -1,10 +1,23 @@
 <html>
 <head>
 <title>Abdul Ali Khan</title>
+  <!-- Welcome Script -->
+    <script>
+      var items = ["Welcome!", "Benvenuto!", "ようこそ!", "Willkommen!", "Bienvenue!", "歡迎!", "Velkomst!", "Добро пожаловат!", "Welkom!", "Καλωσόρισμα!", "Welina!"]     
+      cur_item = 1,     
+      ticker = $("#welcome"); 
+ 
+      ticker.text(items[0]);
+ 
+      setInterval(function() {      
+          cur_item = (cur_item + 1 > items.length - 1) ? 0: cur_item + 1;      
+          ticker.text(items[cur_item]);    
+      }, 1500);
+    </script>
 </head>
 <body>
 <center>
-<h1>Welcome!</h1>
+<h1><span id="welcome"></span></h1>
 <h2>This website is currently under construction.</h2>
 </center>
 </body>
