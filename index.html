@@ -1,28 +1,176 @@
 <html>
 <head>
 <title>Abdul Ali Khan</title>
+<style>
+h1{
+	font-family: Impact;
+	font-size: 48px;
+	text-shadow: 1px 1px 2px black, 0 0 25px lime, 0 0 5px green;
+}
+a:link {
+    color: white;
+}
+a:visited {
+    color: white;
+}
+a:hover {
+    color: lime;
+}
+a:active {
+    color: lime;
+}
+.container {
+	border: 5px solid white ;
+	width: 600px;
+	Background-color: black;
+}
+</style>
 </head>
-<body>
+<body background="images/bg.gif" text="white">
 <center>
-  <h1><span id="welcome"></span></h1>
-  <!-- jQuery (Bootstrap) -->
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Javascript (Bootstrap) -->
-    <script src = "js/bootstrap.min.js"></script>
-  <!-- Welcome Script -->
-    <script>
-      var items = ["Welcome!", "!خوش آمدید", "환영!", "Benvenuto!", "ようこそ!", "Willkommen!", "Bienvenue!", "歡迎!", "Velkomst!", "Добро пожаловат!", "Welkom!", "Καλωσόρισμα!", "Welina!"]     
-      cur_item = 1,     
-      ticker = $("#welcome"); 
- 
-      ticker.text(items[0]);
- 
-      setInterval(function() {      
-          cur_item = (cur_item + 1 > items.length - 1) ? 0: cur_item + 1;      
-          ticker.text(items[cur_item]);    
-      }, 1500);
-    </script>
-  <h3>This website is currently under construction.</h3>
+<p>
+
+<script>
+
+TypingText = function(element, interval, cursor, finishedCallback) {
+  if((typeof document.getElementById == "undefined") || (typeof element.innerHTML == "undefined")) {
+    this.running = true;
+    return;
+  }
+  this.element = element;
+  this.finishedCallback = (finishedCallback ? finishedCallback : function() { return; });
+  this.interval = (typeof interval == "undefined" ? 100 : interval);
+  this.origText = this.element.innerHTML;
+  this.unparsedOrigText = this.origText;
+  this.cursor = (cursor ? cursor : "");
+  this.currentText = "";
+  this.currentChar = 0;
+  this.element.typingText = this;
+  if(this.element.id == "") this.element.id = "typingtext" + TypingText.currentIndex++;
+  TypingText.all.push(this);
+  this.running = false;
+  this.inTag = false;
+  this.tagBuffer = "";
+  this.inHTMLEntity = false;
+  this.HTMLEntityBuffer = "";
+}
+TypingText.all = new Array();
+TypingText.currentIndex = 0;
+TypingText.runAll = function() {
+  for(var i = 0; i < TypingText.all.length; i++) TypingText.all[i].run();
+}
+TypingText.prototype.run = function() {
+  if(this.running) return;
+  if(typeof this.origText == "undefined") {
+    setTimeout("document.getElementById('" + this.element.id + "').typingText.run()", this.interval); // We haven't finished loading yet.  Have patience.
+    return;
+  }
+  if(this.currentText == "") this.element.innerHTML = "";
+//  this.origText = this.origText.replace(/<([^<])*>/, "");     // Strip HTML from text.
+  if(this.currentChar < this.origText.length) {
+    if(this.origText.charAt(this.currentChar) == "<" && !this.inTag) {
+      this.tagBuffer = "<";
+      this.inTag = true;
+      this.currentChar++;
+      this.run();
+      return;
+    } else if(this.origText.charAt(this.currentChar) == ">" && this.inTag) {
+      this.tagBuffer += ">";
+      this.inTag = false;
+      this.currentText += this.tagBuffer;
+      this.currentChar++;
+      this.run();
+      return;
+    } else if(this.inTag) {
+      this.tagBuffer += this.origText.charAt(this.currentChar);
+      this.currentChar++;
+      this.run();
+      return;
+    } else if(this.origText.charAt(this.currentChar) == "&" && !this.inHTMLEntity) {
+      this.HTMLEntityBuffer = "&";
+      this.inHTMLEntity = true;
+      this.currentChar++;
+      this.run();
+      return;
+    } else if(this.origText.charAt(this.currentChar) == ";" && this.inHTMLEntity) {
+      this.HTMLEntityBuffer += ";";
+      this.inHTMLEntity = false;
+      this.currentText += this.HTMLEntityBuffer;
+      this.currentChar++;
+      this.run();
+      return;
+    } else if(this.inHTMLEntity) {
+      this.HTMLEntityBuffer += this.origText.charAt(this.currentChar);
+      this.currentChar++;
+      this.run();
+      return;
+    } else {
+      this.currentText += this.origText.charAt(this.currentChar);
+    }
+    this.element.innerHTML = this.currentText;
+    this.element.innerHTML += (this.currentChar < this.origText.length - 1 ? (typeof this.cursor == "function" ? this.cursor(this.currentText) : this.cursor) : "");
+    this.currentChar++;
+    setTimeout("document.getElementById('" + this.element.id + "').typingText.run()", this.interval);
+  } else {
+ this.currentText = "";
+ this.currentChar = 0;
+        this.running = false;
+        this.finishedCallback();
+  }
+}
+</script>
+<h1>Abdul Ali Khan</h1>
+<div class="container">
+<h3><p id="info">
+<font color="white">root@localhost:~ ./WelcomeMSG.sh</br>
+<br>Hi there! My name is <font color="lime">Abdul Ali Khan</font>.</br>
+<br>root@localhost:~ ./MyWork.sh</br>
+<br>Here's a list of the projects that I'm currently working on:
+<br><a href="https://www.cocashcreators.com" target="_blank">www.CocashCreators.Com</a>
+<br><a href="https://www.alevelcsonline.cf" target="_blank">www.ALevelCSOnline.CF</a>
+<br><a href="https://www.ytdownloader.cf" target="_blank">www.YTDownloader.CF</a>
+<br><a href="https://www.unxia.cf" target="_blank">www.Unxia.CF</a>
+<br><a href="https://www.kirp.cf" target="_blank">www.Kirp.CF</a></br>
+<br>root@localhost:~ ./MyHobbies.sh</br>
+<br>-bash: /home/MyHobbies.sh: No such file or directory
+<br>Just kidding, My hobby is bug bounty hunting.
+<br><a href="acknowledgements.html">Click Here</a> to view some of my acknowledgements.</br>
+<br>To view my professional profile, Please <a href="https://pk.linkedin.com/in/abdul-ali-khan-620632144" target="_blank">Click Here</a>
+<br>root@localhost:~ ./logout</br>
+<br>Logging off
+<br>.....................................
+<br>Session Terminated
+<br>Goodbye.
+</font></h3></div></p>
+<script language="JavaScript">
+var message="";
+///////////////////////////////////
+function clickIE() {if (document.all) {(message);return false;}}
+function clickNS(e) {if
+(document.layers||(document.getElementById&&!document.all)) {
+if (e.which==2||e.which==3) {(message);return false;}}}
+if (document.layers)
+{document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+document.oncontextmenu=new Function("return false")
+// -->
+</script>
+<script type="text/javascript"> 
+new TypingText(document.getElementById("info"), 50, function(i){
+var ar = new Array("_"," ","_","_"); return " " + ar[i.length %
+ar.length]; });
+TypingText.runAll();
+</script>
+<script language="JavaScript">
+document.ondragstart = farik;
+document.onselectstart = farik;
+document.oncontextmenu = farik;
+document.all = farik;
+document.layers = farik;
+function farik() {
+return false
+}
+</script>
 </center>
 </body>
 </html>
