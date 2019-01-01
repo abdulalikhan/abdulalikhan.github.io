@@ -10,6 +10,20 @@
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
 
     <style>
+	.embed-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		max-width: 100%; 
+	} 
+	.embed-container iframe, .embed-container object, .embed-container embed { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%; 
+	}
     .tall-row {
         margin-top: 40px;
     }
@@ -56,6 +70,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Welcome<span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
+							<li><a class="nav-link js-scroll-trigger" href="#webdesignspeedart">Web Design Speed Art Videos</a></li>
 							<li><a class="nav-link js-scroll-trigger" href="#webdesign">Web Design Services</a></li>
 							<li><a class="nav-link js-scroll-trigger" href="#pentesting">Pentesting Services</a></li>
                             <li><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
@@ -83,6 +98,35 @@
                 <!-- <a class="btn btn-lg btn-primary" href="AbdulAliKhanCV.pdf" role="button" target="_blank">My Résumé</a> -->
             </p>
         </div>
+		
+		<!-- YouTube Videos (Web Design Speed Art) -->
+		<section id="webdesignspeedart">
+			<div class="jumbotron">
+				<h3>My Web Design Speed Art Videos</h3>
+					<ul class="nav nav-tabs">
+						<li class="active"><a aria-expanded="true" href="#clubsite" data-toggle="tab">Club Website Design</a></li>
+						<li class=""><a aria-expanded="false" href="#travelersite" data-toggle="tab">Traveler Website Design</a></li>
+						<li class=""><a aria-expanded="false" href="#artisticsite" data-toggle="tab">Artistic Website Design</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade active in" id="clubsite">
+							<div class='embed-container'>
+								<iframe src='https://www.youtube.com/embed/C_CLTaq2gws' frameborder='0' allowfullscreen></iframe>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="travelersite">
+							<div class='embed-container'>
+								<iframe src='https://www.youtube.com/embed/8HNTt9pJpNw' frameborder='0' allowfullscreen></iframe>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="artisticsite">
+							<div class='embed-container'>
+								<iframe src='https://www.youtube.com/embed/hwNIFDXGx0Q' frameborder='0' allowfullscreen></iframe>
+							</div>
+						</div>
+					</div>
+			</div>
+		</section>
 		
 		<!-- Web Designing Form -->
 		<section id="webdesign">
